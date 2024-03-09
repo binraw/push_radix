@@ -41,7 +41,7 @@ t_stacks   *complete_stacks(t_list **stack_a, t_stacks *s)
         duplicate = duplicate->next;
         
     }
-    ft_lstclear(dup, free);
+    ft_lstclear(&dup, free);
     // free(duplicate); //free depuis le debut
     return (s);
 }
