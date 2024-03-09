@@ -59,6 +59,8 @@ int	build_stack(int argc, char **argv, t_list **stack_a)
 void	control_sort_list(t_list **stack_a, t_list **stack_b)
 {
 	t_stacks *s;
+
+	s = NULL;
 	if (ft_lstsize(*stack_a) == 2)
 	{
 		if ((*stack_a)->content > (*stack_a)->next->content)
