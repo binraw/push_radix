@@ -80,6 +80,7 @@ void	control_sort_list(t_list **stack_a, t_list **stack_b)
 		// big_digit(stack_a, stack_b);
 	ft_combi_clear(stack_a, stack_b);
 	free(s);
+	ft_combi_clear(&stack_a, &stack_b);
 }
 
 int	main(int argc, char **argv)
