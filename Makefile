@@ -6,7 +6,7 @@ PRINTFDIR = ./printf
 LIBFTDIR = ./printf/libft
 DIR_OBJ = .object/
 RM = rm -Rf
-SRCS = lst_create.c main.c radix.c swap_command.c lst_utils.c threenum.c fivenum.c finder.c big_lst_algo.c check.c count_rotate.c rotation.c check_error.c  big_utils.c
+SRCS = lst_create.c main.c radix.c swap_command.c lst_utils.c threenum.c fivenum.c finder.c big_lst_algo.c check.c count_rotate.c rotation.c check_error.c
 FT_PRINTF = ./printf/libftprintf.a
 
 
