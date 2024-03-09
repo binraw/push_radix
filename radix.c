@@ -52,7 +52,7 @@ void	create_index(t_stacks *s)
 	int		k;
 	int		*new_a;
 
-	new_a = malloc(s->a_size * sizeof (*int));
+	new_a = malloc(s->a_size * sizeof *(int));
 	//if (new_a == NULL)
 	//	free_and_exit_with_message(s, "Error\n");
 	i = 0;
