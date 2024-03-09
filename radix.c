@@ -28,15 +28,13 @@ void	init_stacks(t_list **stack_a, t_stacks *s)
 t_stacks   *complete_stacks(t_list **stack_a, t_stacks *s)
 {
     int  i;
-    int  y;
     t_list  *duplicate;
 
     duplicate = ft_lstduplicate(*stack_a);
     i = 0;
-    y = 0;
     while (duplicate != NULL)
     {
-        s[i] = duplicate->content;
+        s->a[i] = duplicate->content;
         i++;
         duplicate = duplicate->next;
         
