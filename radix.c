@@ -109,8 +109,8 @@ void	radix_sort(t_stacks *s)
 	}
 	while (s->b_size != 0)
 		pa_push_radix(s);
-    ft_lstclear(&s->a, free);
-    ft_lstclear(&s->b, free);
+    ft_lstclear_rqdix(&s->a);
+    ft_lstclear_radix(&s->b);
 }
 
 void    rb_rotate_radix(int *tab, int size)

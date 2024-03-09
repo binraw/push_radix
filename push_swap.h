@@ -122,6 +122,6 @@ void	create_index(t_stacks *s);
 int	is_array_sorted(t_stacks *s);
 t_stacks   *complete_stacks(t_list **stack_a, t_stacks *s);
 void	init_stacks(t_list **stack_a, t_stacks *s);
-
+void	ft_lstclear_radix(t_stacks *lst)
 
 #endif
