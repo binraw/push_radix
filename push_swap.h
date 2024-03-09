@@ -120,7 +120,7 @@ void	radix_sort(t_stacks *s);
 void	radix_sort_stack_b(t_stacks *s, int b_size, int bit_size, int j);
 void	create_index(t_stacks *s);
 int	is_array_sorted(t_list *s);
-t_stacks   complete_stacks(t_list **stack_a, t_stacks *s);
+t_stacks   *complete_stacks(t_list **stack_a, t_stacks *s);
 void	init_stacks(t_list **stack_a, t_stacks *s);
 
 

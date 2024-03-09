@@ -25,7 +25,7 @@ void	init_stacks(t_list **stack_a, t_stacks *s)
 	if (s->b == NULL)
         return ;
 }
-t_stacks   complete_stacks(t_list **stack_a, t_stacks *s)
+t_stacks   *complete_stacks(t_list **stack_a, t_stacks *s)
 {
     int  i;
     int  y;
