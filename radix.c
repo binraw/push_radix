@@ -17,11 +17,11 @@ int	is_array_sorted(t_stacks *s)
 void	init_stacks(t_list **stack_a, t_stacks *s)
 {
     s->a_size = ft_lstsize(*stack_a);
-    s->b_size = 0;
+    s->b_size =  ft_lstsize(*stack_a);
     s->a = malloc(s->a_size * sizeof *s->a);
     if (s->a == NULL)
         return ;
-    s->b = malloc(s->a_size * sizeof * s->b);
+    s->b = malloc(s->b_size * sizeof *s->b);
 	if (s->b == NULL)
         return ;
 }
