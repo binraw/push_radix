@@ -58,6 +58,7 @@ int	build_stack(int argc, char **argv, t_list **stack_a)
 
 void	control_sort_list(t_list **stack_a, t_list **stack_b)
 {
+	t_stacks *s;
 	if (ft_lstsize(*stack_a) == 2)
 	{
 		if ((*stack_a)->content > (*stack_a)->next->content)
@@ -68,7 +69,13 @@ void	control_sort_list(t_list **stack_a, t_list **stack_b)
 	if (ft_lstsize(*stack_a) == 5 || ft_lstsize(*stack_a) == 4)
 		five_digit(stack_a, stack_b);
 	if (ft_lstsize(*stack_a) > 5)
-		big_digit(stack_a, stack_b);
+	{
+		init_stacks(stack_a, s);
+		s = complete_stacks(s, stack_a, s);
+		create_index(s);
+		radix_sort(s);
+	}
+		// big_digit(stack_a, stack_b);
 	ft_combi_clear(stack_a, stack_b);
 }
 

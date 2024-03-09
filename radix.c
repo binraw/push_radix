@@ -14,6 +14,36 @@ int	is_array_sorted(t_list *s)
 	}
 	return (1);
 }
+void	init_stacks(t_list **stack_a, t_stacks *s)
+{
+    s->a_size = ft_lstsize(*stack_a);
+    s->b_size = 0;
+    s->a = malloc(s->a_size * sizeof *s->a);
+    if (s->a == NULL)
+        return ;
+    s->b = malloc(s->a_size * sizeof * s->b);
+	if (s->b == NULL)
+        return ;
+}
+t_stacks   complete_stacks(t_list **stack_a, t_stacks *s)
+{
+    int  i;
+    int  y;
+    t_list  *duplicate;
+
+    duplicate = ft_lstduplicate(*stack_a);
+    i = 0;
+    y = 0;
+    while (duplicate != NULL)
+    {
+        s[i] = duplicate->content;
+        i++;
+        duplicate = duplicate->next;
+        
+    }
+    free(duplicate); //free depuis le debut
+    return (s);
+}
 
 void	create_index(t_stacks *s)
 {
