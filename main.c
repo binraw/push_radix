@@ -71,7 +71,7 @@ void	control_sort_list(t_list **stack_a, t_list **stack_b)
 	if (ft_lstsize(*stack_a) > 5)
 	{
 		init_stacks(stack_a, s);
-		s = complete_stacks(s, stack_a, s);
+		s = complete_stacks(stack_a, s);
 		create_index(s);
 		radix_sort(s);
 	}
