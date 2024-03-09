@@ -1,7 +1,7 @@
 #include "push_swap.h"
 
 
-int	is_array_sorted(t_list *s)
+int	is_array_sorted(t_stacks *s)
 {
 	int	i;
 
