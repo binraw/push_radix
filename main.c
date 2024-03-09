@@ -60,7 +60,7 @@ void	control_sort_list(t_list **stack_a, t_list **stack_b)
 {
 	t_stacks *s;
 
-	s = malloc(sizeof * s);
+	s = malloc(ft_lstsize(*stack_a) * sizeof *s);
 	if (ft_lstsize(*stack_a) == 2)
 	{
 		if ((*stack_a)->content > (*stack_a)->next->content)
