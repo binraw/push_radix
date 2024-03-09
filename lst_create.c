@@ -91,7 +91,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	*lst = NULL;
 }
 
-void	ft_lstclear_radix(t_stacks *lst)
+void	ft_lstclear_radix(t_stacks lst)
 {
 	t_stacks	*current;
 	t_stacks	*next;
