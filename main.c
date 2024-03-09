@@ -77,7 +77,6 @@ void	control_sort_list(t_list **stack_a, t_list **stack_b)
 		create_index(s);
 		radix_sort(s);
 	}
-		// big_digit(stack_a, stack_b);
 	ft_combi_clear(stack_a, stack_b);
 	free(s);
 }
