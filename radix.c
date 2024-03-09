@@ -17,7 +17,7 @@ int	is_array_sorted(t_stacks *s)
 void	init_stacks(t_list **stack_a, t_stacks *s)
 {
     s->a_size = ft_lstsize(*stack_a);
-    s->b_size =  ft_lstsize(*stack_a);
+    s->b_size =  0;
     s->a = malloc(s->a_size * sizeof *s->a);
     if (s->a == NULL)
         return ;
@@ -51,9 +51,9 @@ void	create_index(t_stacks *s)
 	int		*new_a;
 
 	new_a = malloc(s->a_size * sizeof * new_a);
-	if (new_a == NULL)
+	//if (new_a == NULL)
 	//	free_and_exit_with_message(s, "Error\n");
-	i = -1;
+	i = 0;
 	while (++i < s->a_size)
 	{
 		k = 0;
@@ -62,6 +62,7 @@ void	create_index(t_stacks *s)
 			if (s->a[i] > s->a[j])
 				k++;
 		new_a[i] = k;
+        i++;
 	}
 	i = s->a_size;
 	while (i--)
@@ -114,23 +115,26 @@ void    rb_rotate_radix(int *tab, int size)
 {
     int tmp;
 
-    if (size < 0)
+    if (size < 1)
         return ;
+    
     tmp = tab[0];
+    
+   
 	ft_memmove(tab, tab + 1, sizeof(int) * (size - 1));
-	tab[size - 1] = tmp;
-	write(1, "rb", 2);
+	 tab[size - 1] = tmp;
+	ft_printf("rb\n");
 }
 void    ra_rotate_radix(int *tab, int size)
 {
     int tmp;
 
-    if (size < 0)
+    if (size < 1)
         return ;
     tmp = tab[0];
 	ft_memmove(tab, tab + 1, sizeof(int) * (size - 1));
 	tab[size - 1] = tmp;
-	write(1, "ra", 2);
+	ft_printf("ra\n");
 }
 
 void	pa_push_radix(t_stacks *s)
@@ -143,9 +147,10 @@ void	pa_push_radix(t_stacks *s)
 		ft_memmove(s->a + 1, s->a, sizeof(int) * s->a_size);
 		s->a[0] = tmp;
 		s->b_size--;
+        s->a_size++;
 		ft_memmove(s->b, s->b + 1, sizeof(int) * s->b_size);
-		s->a_size++;
-    write(1, "pa", 2);
+		
+   ft_printf("pa\n");
 }
 
 void    pb_push_radix(t_stacks *s)
@@ -157,8 +162,8 @@ void    pb_push_radix(t_stacks *s)
 	ft_memmove(s->b + 1, s->b, sizeof(int) * s->b_size);
 	s->b[0] = tmp;
 	s->a_size--;
+    s->b_size++;
 	ft_memmove(s->a, s->a + 1, sizeof(int) * s->a_size);
-	s->b_size++;
-     write(1, "pb", 2);
+	
+    ft_printf("pb\n");
 }
-
