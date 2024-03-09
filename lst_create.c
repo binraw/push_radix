@@ -91,19 +91,19 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	*lst = NULL;
 }
 
-void	ft_lstclear_radix(t_stacks *lst)
-{
-	t_stacks	*current;
-	t_stacks	*next;
+// void	ft_lstclear_radix(t_stacks *lst)
+// {
+// 	t_stacks	*current;
+// 	t_stacks	*next;
 
-	if (!lst)
-		return ;
-	current = lst;
-	while (current != NULL)
-	{
-		next = current->next;
-		free(current);
-		current = next;
-	}
-	*lst = NULL;
-}
+// 	if (!lst)
+// 		return ;
+// 	current = lst;
+// 	while (current != NULL)
+// 	{
+// 		next = current->next;
+// 		free(current);
+// 		current = next;
+// 	}
+// 	*lst = NULL;
+// }

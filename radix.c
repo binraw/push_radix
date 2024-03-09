@@ -67,7 +67,7 @@ void	create_index(t_stacks *s)
 	i = s->a_size;
 	while (i--)
 		s->a[i] = new_a[i];
-	ft_lstclear(&new_a, free);
+	free(new_a);
 }
 
 void	radix_sort_stack_b(t_stacks *s, int b_size, int bit_size, int j)
@@ -109,8 +109,8 @@ void	radix_sort(t_stacks *s)
 	}
 	while (s->b_size != 0)
 		pa_push_radix(s);
-    ft_lstclear_rqdix(&s->a);
-    ft_lstclear_radix(&s->b);
+    free(&s->a);
+    free(&s->b);
 }
 
 void    rb_rotate_radix(int *tab, int size)
