@@ -113,6 +113,14 @@ int		condition_papush(t_list **tmp, t_list **dupli_a);
 int		condition_find(int nbr_push, t_list **stack_from);
 void	stack_init(t_list **stack_a, char *value);
 void	ra_rotate_void(t_list **stack_a);
+void    pb_push_radix(t_stacks *s);
+void	pa_push_radix(t_stacks *s);
+void    ra_rotate_radix(int *tab, int size);
+void    rb_rotate_radix(int *tab, int size);
+void	radix_sort(t_stacks *s);
+void	radix_sort_stack_b(t_stacks *s, int b_size, int bit_size, int j);
+void	create_index(t_stacks *s);
+int	is_array_sorted(t_list *s);
 
 
 #endif

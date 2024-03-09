@@ -41,7 +41,7 @@ void	create_index(t_stacks *s)
 	free(new_a);
 }
 
-static void	radix_sort_stack_b(t_stacks *s, int b_size, int bit_size, int j)
+void	radix_sort_stack_b(t_stacks *s, int b_size, int bit_size, int j)
 {
 	while (b_size-- && j <= bit_size && !is_array_sorted(s))
 	{
