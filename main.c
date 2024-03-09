@@ -73,12 +73,13 @@ void	control_sort_list(t_list **stack_a, t_list **stack_b)
 	if (ft_lstsize(*stack_a) > 5)
 	{
 		init_stacks(stack_a, s);
-		// s = complete_stacks(stack_a, s);
-		// create_index(s);
-		// radix_sort(s);
+		 s = complete_stacks(stack_a, s);
+		create_index(s);
+		radix_sort(s);
 	}
 		// big_digit(stack_a, stack_b);
 	ft_combi_clear(stack_a, stack_b);
+	ft_lstclear(&s, free);
 }
 
 int	main(int argc, char **argv)
