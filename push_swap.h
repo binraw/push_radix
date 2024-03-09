@@ -24,12 +24,23 @@
 
 typedef struct s_list
 {
+	int				*tab;
 	int				content;
 	int				index;
 	int				second_part;
+	int				size;
 	struct s_list	*prev;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_stacks
+{
+	int		*a;
+	int		*b;
+	int		a_size;
+	int		b_size;
+	char	*join_args;
+}			t_stacks;
 
 t_list	*ft_lstnew(int content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
