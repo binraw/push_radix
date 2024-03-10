@@ -77,8 +77,10 @@ void	control_sort_list(t_list **stack_a, t_list **stack_b)
 		create_index(s);
 		radix_sort(s);
 	}
-	ft_combi_clear(stack_a, stack_b);
-	// free(s);
+	if (stack_b)
+		ft_combi_clear(stack_a, stack_b);
+	else
+		ft_lstclear(stack_a, free);
 }
 
 int	main(int argc, char **argv)
