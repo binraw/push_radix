@@ -54,8 +54,12 @@ void	create_index(t_stacks *s)
 
 	new_a = malloc(s->a_size * sizeof(int));
 
-	//if (new_a == NULL)
-	//	free_and_exit_with_message(s, "Error\n");
+	if (new_a == NULL)
+	{
+        free(s);
+        write(1, "Error\n", 6);
+        return ;
+    }
 	i = 0;
 	while (++i < s->a_size)
 	{
@@ -112,8 +116,8 @@ void	radix_sort(t_stacks *s)
 	}
 	while (s->b_size != 0)
 		pa_push_radix(s);
-    // free(&s->a);
-    // free(&s->b);
+    free(&s->a);
+    free(&s->b);
 }
 
 void    rb_rotate_radix(int *tab, int size)
