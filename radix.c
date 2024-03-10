@@ -18,10 +18,10 @@ void	init_stacks(t_list **stack_a, t_stacks *s)
 {
     s->a_size = ft_lstsize(*stack_a);
     s->b_size =  0;
-    s->a = malloc(s->a_size * sizeof *s->a);
+    s->a = malloc(s->a_size * sizeof (int));
     if (s->a == NULL)
         return ;
-    s->b = malloc(s->a_size * sizeof *s->b);
+    s->b = malloc(s->a_size * sizeof (int));
 	if (s->b == NULL)
         return ;
 }
