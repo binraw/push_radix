@@ -20,10 +20,17 @@ void	init_stacks(t_list **stack_a, t_stacks *s)
     s->b_size =  0;
     s->a = malloc(s->a_size * sizeof (int));
     if (s->a == NULL)
+    {
+        free(s);
         return ;
+    }
+        
     s->b = malloc(s->a_size * sizeof (int));
 	if (s->b == NULL)
+    {
+        free(s);
         return ;
+    }
 }
 t_stacks   *complete_stacks(t_list **stack_a, t_stacks *s)
 {
