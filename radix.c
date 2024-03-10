@@ -4,7 +4,13 @@
 int	is_array_sorted(t_stacks *s)
 {
 	int	i;
-
+    if (s->a_size < 2) 
+    {
+        if (s->a[0] < s->a[1])
+            return (1);
+        return (0);
+    }
+        
 	i = 0;
 	while (i < s->a_size - 1)
 	{
