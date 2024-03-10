@@ -115,8 +115,8 @@ void	radix_sort(t_stacks *s)
 	size = s->a_size;
 	while (size > 1 && ++bit_size)
 		size /= 2;
-	j = -1;
-	while (++j <= bit_size)
+	j = 0;
+	while (j <= bit_size)
 	{
 		size = s->a_size;
 		while (size-- && !is_array_sorted(s))
@@ -127,6 +127,7 @@ void	radix_sort(t_stacks *s)
 				ra_rotate_radix(s->a, s->a_size);
 		}
 		radix_sort_stack_b(s, s->b_size, bit_size, j + 1);
+        j++;
 	}
 	while (s->b_size != 0)
 		pa_push_radix(s);
