@@ -28,6 +28,7 @@ void	init_stacks(t_list **stack_a, t_stacks *s)
     s->b = malloc(s->a_size * sizeof (int));
 	if (s->b == NULL)
     {
+        free(s->a);
         free(s);
         return ;
     }
@@ -123,6 +124,8 @@ void	radix_sort(t_stacks *s)
 	}
 	while (s->b_size != 0)
 		pa_push_radix(s);
+    free(s->a);
+    free(s->b);
     free(s);
 }
 
