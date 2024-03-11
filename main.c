@@ -6,7 +6,7 @@
 /*   By: rtruvelo <rtruvelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:06:35 by rtruvelo          #+#    #+#             */
-/*   Updated: 2024/03/11 13:26:51 by rtruvelo         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:06:34 by rtruvelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,7 @@ int	build_stack(int argc, char **argv, t_list **stack_a)
 	{
 		n = ft_atoi(argv[i]);
 		if (n < INT_MIN || n > INT_MAX)
-		{
-			write_error(-1);
-			ft_lstclear(stack_a, free);
-			return (-1);
-		}
+			return (error_free_stack(stack_a), -1);
 		if (ft_strlen(argv[i]) > 1 && i == 1)
 		{
 			y = stack_init(stack_a, argv[i]);
@@ -61,12 +57,8 @@ int	build_stack(int argc, char **argv, t_list **stack_a)
 		}
 		else
 		{
-			// ft_lstadd_back(stack_a, ft_lstnew((int)n));
 			if (ft_lstadd_back(stack_a, ft_lstnew((int)n)) == -1)
-			{
-				// free(stack_a);
 				return (-1);
-			}
 		}
 	}
 	return (0);
@@ -74,7 +66,7 @@ int	build_stack(int argc, char **argv, t_list **stack_a)
 
 void	control_sort_list(t_list **stack_a, t_list **stack_b)
 {
-	t_stacks *s;
+	t_stacks	*s;
 
 	s = malloc(sizeof(t_stacks));
 	if (!s)
@@ -117,7 +109,6 @@ int	main(int argc, char **argv)
 	t_list	*stack_a;
 	t_list	*stack_b;
 
-
 	stack_a = NULL;
 	stack_b = NULL;
 	if (!argc)
@@ -131,26 +122,4 @@ int	main(int argc, char **argv)
 	if (error_value(&stack_a, &stack_b) == -1)
 		return (-1);
 	control_sort_list(&stack_a, &stack_b);
-}
-
-int	control_order(t_list **stack_a)
-{
-	t_list	*temp;
-	t_list	*dup;
-
-	dup = ft_lstduplicate(*stack_a);
-	if (!dup)
-		return (-1);
-	temp = dup;
-	while (temp->next != NULL)
-	{
-		if (temp->content > temp->next->content)
-		{
-			ft_lstclear(&dup, free);
-			return (-1);
-		}
-		temp = temp->next;
-	}
-	ft_lstclear(&dup, free);
-	return (0);
 }
