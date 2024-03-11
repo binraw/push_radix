@@ -6,7 +6,7 @@
 /*   By: rtruvelo <rtruvelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:41:34 by rtruvelo          #+#    #+#             */
-/*   Updated: 2024/02/28 13:24:59 by rtruvelo         ###   ########.fr       */
+/*   Updated: 2024/03/11 13:27:06 by rtruvelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ t_list	*ft_lstnew(int content)
 	return (element);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
 
 	if (!new)
-		return ;
+		return (-1);
 	if (*lst == NULL)
 	{
 		*lst = new;
 		new->next = NULL;
-		return ;
+		return (0);
 	}
 	else
 	{
@@ -43,6 +43,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		last->next = new;
 		new->prev = last;
 	}
+	return (0);
 }
 
 t_list	*ft_lstlast(t_list *lst)

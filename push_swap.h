@@ -6,7 +6,7 @@
 /*   By: rtruvelo <rtruvelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:40:49 by rtruvelo          #+#    #+#             */
-/*   Updated: 2024/03/11 11:45:01 by rtruvelo         ###   ########.fr       */
+/*   Updated: 2024/03/11 13:25:28 by rtruvelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_stacks
 }			t_stacks;
 
 t_list	*ft_lstnew(int content);
-void	ft_lstadd_back(t_list **lst, t_list *new);
+int	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
 int		is_empty_t_list(t_list *li);
 void	print_liste(t_list *liste);
@@ -110,7 +110,7 @@ void	control_sort_list(t_list **stack_a, t_list **stack_b);
 void	transfer_num_ra(t_list **stack_a, t_list **stack_b, int index);
 int		condition_papush(t_list **tmp, t_list **dupli_a);
 int		condition_find(int nbr_push, t_list **stack_from);
-void	stack_init(t_list **stack_a, char *value);
+int	stack_init(t_list **stack_a, char *value);
 void	ra_rotate_void(t_list **stack_a);
 void    pb_push_radix(t_stacks *s);
 void	pa_push_radix(t_stacks *s);
@@ -118,7 +118,7 @@ void    ra_rotate_radix(int *tab, int size);
 void    rb_rotate_radix(int *tab, int size);
 void	radix_sort(t_stacks *s);
 void	radix_sort_stack_b(t_stacks *s, int b_size, int bit_size, int j);
-void	create_index(t_stacks *s);
+int	create_index(t_stacks *s);
 int	is_array_sorted(t_stacks *s);
 t_stacks   *complete_stacks(t_list **stack_a, t_stacks *s);
 void	init_stacks(t_list **stack_a, t_stacks *s);

@@ -6,13 +6,13 @@
 /*   By: rtruvelo <rtruvelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:06:35 by rtruvelo          #+#    #+#             */
-/*   Updated: 2024/03/11 11:46:01 by rtruvelo         ###   ########.fr       */
+/*   Updated: 2024/03/11 13:26:51 by rtruvelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_init(t_list **stack_a, char *value)
+int	stack_init(t_list **stack_a, char *value)
 {
 	char	**str;
 	int		i;
@@ -20,26 +20,30 @@ void	stack_init(t_list **stack_a, char *value)
 
 	i = 0;
 	if (!value)
-		return ;
+		return (0);
 	str = ft_split(value, ' ');
 	while (str[i])
 	{
 		n = ft_atoi(str[i]);
 		ft_lstadd_back(stack_a, ft_lstnew(n));
+		if (ft_lstnew(n) == NULL)
+			return (-1);
 		i++;
 	}
-	
 	free(str[0]);
 	free(str);
+	return (0);
 }
 
 int	build_stack(int argc, char **argv, t_list **stack_a)
 {
 	int		i;
 	long	n;
+	int		y;
 
 	i = 0;
 	n = 0;
+	y = 0;
 	while (++i < argc)
 	{
 		n = ft_atoi(argv[i]);
@@ -50,9 +54,20 @@ int	build_stack(int argc, char **argv, t_list **stack_a)
 			return (-1);
 		}
 		if (ft_strlen(argv[i]) > 1 && i == 1)
-			stack_init(stack_a, argv[i]);
+		{
+			y = stack_init(stack_a, argv[i]);
+			if (y == -1)
+				return (-1);
+		}
 		else
-			ft_lstadd_back(stack_a, ft_lstnew((int)n));
+		{
+			// ft_lstadd_back(stack_a, ft_lstnew((int)n));
+			if (ft_lstadd_back(stack_a, ft_lstnew((int)n)) == -1)
+			{
+				// free(stack_a);
+				return (-1);
+			}
+		}
 	}
 	return (0);
 }
@@ -62,6 +77,11 @@ void	control_sort_list(t_list **stack_a, t_list **stack_b)
 	t_stacks *s;
 
 	s = malloc(sizeof(t_stacks));
+	if (!s)
+	{
+		ft_lstclear(stack_a, free);
+		return ;
+	}
 	s->a_size = 0;
 	if (ft_lstsize(*stack_a) == 2)
 		if ((*stack_a)->content > (*stack_a)->next->content)
@@ -71,10 +91,8 @@ void	control_sort_list(t_list **stack_a, t_list **stack_b)
 	if (ft_lstsize(*stack_a) == 5 || ft_lstsize(*stack_a) == 4)
 		five_digit(stack_a, stack_b);
 	if (ft_lstsize(*stack_a) > 5)
-	{
 		big_algo(stack_a, s);
-	}
-	if (ft_lstsize(*stack_a) <= 5)
+	if (ft_lstsize(*stack_a) <= 5 && create_index(s) == 0)
 		free(s);
 	if (stack_b)
 		ft_combi_clear(stack_a, stack_b);
@@ -86,7 +104,11 @@ void	big_algo(t_list **stack_a, t_stacks *s)
 {
 	init_stacks(stack_a, s);
 	s = complete_stacks(stack_a, s);
-	create_index(s);
+	if (create_index(s) == -1)
+	{
+		free_stacks(s);
+		return ;
+	}
 	radix_sort(s);
 }
 
@@ -117,6 +139,8 @@ int	control_order(t_list **stack_a)
 	t_list	*dup;
 
 	dup = ft_lstduplicate(*stack_a);
+	if (!dup)
+		return (-1);
 	temp = dup;
 	while (temp->next != NULL)
 	{

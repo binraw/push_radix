@@ -6,7 +6,7 @@
 /*   By: rtruvelo <rtruvelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:34:10 by rtruvelo          #+#    #+#             */
-/*   Updated: 2024/03/11 11:34:11 by rtruvelo         ###   ########.fr       */
+/*   Updated: 2024/03/11 12:02:55 by rtruvelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_stacks   *complete_stacks(t_list **stack_a, t_stacks *s)
     return (s);
 }
 
-void	create_index(t_stacks *s)
+int	create_index(t_stacks *s)
 {
 	int		i;
 	int		j;
@@ -79,11 +79,7 @@ void	create_index(t_stacks *s)
 
 	new_a = malloc(s->a_size * sizeof(int));
 	if (new_a == NULL)
-	{
-        free(s);
-        write(1, "Error\n", 6);
-        return ;
-    }
+        return (-1);
 	i = 0;
 	while (i < s->a_size)
 	{
@@ -99,6 +95,7 @@ void	create_index(t_stacks *s)
 	while (i--)
 		s->a[i] = new_a[i];
 	free(new_a);
+	return (0);
 }
 
 void	radix_sort_stack_b(t_stacks *s, int b_size, int bit_size, int j)
