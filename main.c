@@ -6,7 +6,7 @@
 /*   By: rtruvelo <rtruvelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:06:35 by rtruvelo          #+#    #+#             */
-/*   Updated: 2024/02/28 14:01:48 by rtruvelo         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:46:01 by rtruvelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ void	stack_init(t_list **stack_a, char *value)
 		ft_lstadd_back(stack_a, ft_lstnew(n));
 		i++;
 	}
+	
 	free(str[0]);
-	free(str); // rajoute le free du tab
+	free(str);
 }
 
 int	build_stack(int argc, char **argv, t_list **stack_a)
@@ -61,26 +62,32 @@ void	control_sort_list(t_list **stack_a, t_list **stack_b)
 	t_stacks *s;
 
 	s = malloc(sizeof(t_stacks));
+	s->a_size = 0;
 	if (ft_lstsize(*stack_a) == 2)
-	{
 		if ((*stack_a)->content > (*stack_a)->next->content)
 			sa_swap(stack_a);
-	}
 	if (ft_lstsize(*stack_a) == 3)
 		sort_three_numbers(three_digit(*stack_a), stack_a);
 	if (ft_lstsize(*stack_a) == 5 || ft_lstsize(*stack_a) == 4)
 		five_digit(stack_a, stack_b);
 	if (ft_lstsize(*stack_a) > 5)
 	{
-		init_stacks(stack_a, s);
-		 s = complete_stacks(stack_a, s);
-		create_index(s);
-		radix_sort(s);
+		big_algo(stack_a, s);
 	}
+	if (ft_lstsize(*stack_a) <= 5)
+		free(s);
 	if (stack_b)
 		ft_combi_clear(stack_a, stack_b);
 	else
 		ft_lstclear(stack_a, free);
+}
+
+void	big_algo(t_list **stack_a, t_stacks *s)
+{
+	init_stacks(stack_a, s);
+	s = complete_stacks(stack_a, s);
+	create_index(s);
+	radix_sort(s);
 }
 
 int	main(int argc, char **argv)

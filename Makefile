@@ -1,7 +1,7 @@
 NAME = push_swap
 PRINTFNAME = libftprintf.a
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 PRINTFDIR = ./printf
 LIBFTDIR = ./printf/libft
 DIR_OBJ = .object/

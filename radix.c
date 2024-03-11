@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   radix.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rtruvelo <rtruvelo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/11 11:34:10 by rtruvelo          #+#    #+#             */
+/*   Updated: 2024/03/11 11:34:11 by rtruvelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 
@@ -10,7 +22,6 @@ int	is_array_sorted(t_stacks *s)
             return (1);
         return (0);
     }
-        
 	i = 0;
 	while (i < s->a_size - 1)
 	{
@@ -20,18 +31,18 @@ int	is_array_sorted(t_stacks *s)
 	}
 	return (1);
 }
+
 void	init_stacks(t_list **stack_a, t_stacks *s)
 {
     s->a_size = ft_lstsize(*stack_a);
     s->b_size =  0;
-    s->a = malloc(s->a_size * sizeof (int));
+    s->a = malloc(s->a_size  *sizeof(int));
     if (s->a == NULL)
     {
         free(s);
         return ;
     }
-        
-    s->b = malloc(s->a_size * sizeof (int));
+    s->b = malloc(s->a_size * sizeof(int));
 	if (s->b == NULL)
     {
         free(s->a);
@@ -67,7 +78,6 @@ void	create_index(t_stacks *s)
 	int		*new_a;
 
 	new_a = malloc(s->a_size * sizeof(int));
-
 	if (new_a == NULL)
 	{
         free(s);
@@ -75,7 +85,7 @@ void	create_index(t_stacks *s)
         return ;
     }
 	i = 0;
-	while (++i < s->a_size)
+	while (i < s->a_size)
 	{
 		k = 0;
 		j = -1;
@@ -131,7 +141,12 @@ void	radix_sort(t_stacks *s)
 	}
 	while (s->b_size != 0)
 		pa_push_radix(s);
-    free(s->a);
+    free_stacks(s);
+}
+
+void	free_stacks(t_stacks *s)
+{
+	free(s->a);
     free(s->b);
     free(s);
 }
