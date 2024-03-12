@@ -6,7 +6,7 @@
 /*   By: rtruvelo <rtruvelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:28:31 by rtruvelo          #+#    #+#             */
-/*   Updated: 2024/03/11 14:58:39 by rtruvelo         ###   ########.fr       */
+/*   Updated: 2024/03/12 11:06:48 by rtruvelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	is_array_sorted(t_stacks *s)
 	return (1);
 }
 
-void	init_stacks(t_list **stack_a, t_stacks *s)
+int	init_stacks(t_list **stack_a, t_stacks *s)
 {
 	s->a_size = ft_lstsize(*stack_a);
 	s->b_size = 0;
@@ -46,15 +46,16 @@ void	init_stacks(t_list **stack_a, t_stacks *s)
 	if (s->a == NULL)
 	{
 		free(s);
-		return ;
+		return (-1);
 	}
 	s->b = malloc(s->a_size * sizeof(int));
 	if (s->b == NULL)
 	{
 		free(s->a);
 		free(s);
-		return ;
+		return (-1);
 	}
+	return (0);
 }
 
 t_stacks	*complete_stacks(t_list **stack_a, t_stacks *s)

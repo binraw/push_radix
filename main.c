@@ -6,7 +6,7 @@
 /*   By: rtruvelo <rtruvelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:06:35 by rtruvelo          #+#    #+#             */
-/*   Updated: 2024/03/11 15:06:34 by rtruvelo         ###   ########.fr       */
+/*   Updated: 2024/03/12 11:36:20 by rtruvelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,21 @@ int	stack_init(t_list **stack_a, char *value)
 
 	i = 0;
 	if (!value)
-		return (0);
+		return (-1);
 	str = ft_split(value, ' ');
 	while (str[i])
 	{
 		n = ft_atoi(str[i]);
-		ft_lstadd_back(stack_a, ft_lstnew(n));
-		if (ft_lstnew(n) == NULL)
+		if (ft_lstadd_back(stack_a, ft_lstnew(n))== -1)
+		{
+			free(str[i]);
+			free(str);
 			return (-1);
+		}	
 		i++;
 	}
-	free(str[0]);
+	while (i >= 0)
+		free(str[i--]);
 	free(str);
 	return (0);
 }
@@ -83,7 +87,8 @@ void	control_sort_list(t_list **stack_a, t_list **stack_b)
 	if (ft_lstsize(*stack_a) == 5 || ft_lstsize(*stack_a) == 4)
 		five_digit(stack_a, stack_b);
 	if (ft_lstsize(*stack_a) > 5)
-		big_algo(stack_a, s);
+		if (big_algo(stack_a, s) == -1)
+			return ;
 	if (ft_lstsize(*stack_a) <= 5 && create_index(s) == 0)
 		free(s);
 	if (stack_b)
@@ -92,16 +97,23 @@ void	control_sort_list(t_list **stack_a, t_list **stack_b)
 		ft_lstclear(stack_a, free);
 }
 
-void	big_algo(t_list **stack_a, t_stacks *s)
+int	big_algo(t_list **stack_a, t_stacks *s)
 {
-	init_stacks(stack_a, s);
+	if (init_stacks(stack_a, s) == -1)
+	{
+		ft_lstclear(stack_a, free);
+		return (-1);
+	}
+	
 	s = complete_stacks(stack_a, s);
 	if (create_index(s) == -1)
 	{
+		ft_lstclear(stack_a, free);
 		free_stacks(s);
-		return ;
+		return (-1);
 	}
 	radix_sort(s);
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -118,7 +130,10 @@ int	main(int argc, char **argv)
 	if (alpha_check(argv) == -1)
 		return (-1);
 	if (build_stack(argc, argv, &stack_a) == -1)
+	{
 		return (-1);
+	}
+		
 	if (error_value(&stack_a, &stack_b) == -1)
 		return (-1);
 	control_sort_list(&stack_a, &stack_b);
