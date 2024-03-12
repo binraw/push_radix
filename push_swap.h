@@ -6,7 +6,7 @@
 /*   By: rtruvelo <rtruvelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:40:49 by rtruvelo          #+#    #+#             */
-/*   Updated: 2024/03/12 10:58:22 by rtruvelo         ###   ########.fr       */
+/*   Updated: 2024/03/12 11:39:43 by rtruvelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int			create_index(t_stacks *s);
 int			is_array_sorted(t_stacks *s);
 int			init_stacks(t_list **stack_a, t_stacks *s);
 void		free_stacks(t_stacks *s);
-int		big_algo(t_list **stack_a, t_stacks *s);
+int			big_algo(t_list **stack_a, t_stacks *s);
 void		error_free_stack(t_list **stack_a);
 
 #endif
