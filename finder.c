@@ -42,6 +42,30 @@ int	minimal_finder(t_list *lst)
 	return (minimal);
 }
 
+int	minimal_index(t_list *lst)
+{
+	int	minimal;
+	int	i;
+	int	min_index;
+
+	minimal = lst->content;
+	i = 0;
+	min_index = 0;
+	if (lst == NULL)
+		return (-1);
+	while (lst != NULL)
+	{
+		if (minimal >= lst->content)
+		{
+			minimal = lst->content;
+			min_index = i;
+		}
+		i++;
+		lst = lst->next;
+	}
+	return (min_index);
+}
+
 int	control_order(t_list **stack_a)
 {
 	t_list	*temp;

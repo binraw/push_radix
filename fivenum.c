@@ -15,12 +15,12 @@
 int	five_digit(t_list **stack_a, t_list **stack_b)
 {
 	while ((*stack_a)->content != minimal_finder(*stack_a))
-		ra_rotate(stack_a);
+		transfer_five(stack_a);
 	pb_push(stack_a, stack_b);
 	if (ft_lstsize(*stack_a) > 3)
 	{
-		while ((*stack_a)->content != biggest_finder(*stack_a))
-			ra_rotate(stack_a);
+		while ((*stack_a)->content != minimal_finder(*stack_a))
+			transfer_five(stack_a);
 		pb_push(stack_a, stack_b);
 	}
 	sort_three_numbers(three_digit(*stack_a), stack_a);
@@ -31,6 +31,14 @@ int	five_digit(t_list **stack_a, t_list **stack_b)
 		pa_push(stack_a, stack_b);
 	}
 	return (0);
+}
+
+void	transfer_five(t_list **stack_a)
+{
+	if (minimal_index(*stack_a) > count_mediane(*stack_a))
+		rra_rotate(stack_a);
+	else
+		ra_rotate(stack_a);
 }
 
 void	ra_rotate_radix(int *tab, int size)

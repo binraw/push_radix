@@ -102,5 +102,8 @@ int			init_stacks(t_list **stack_a, t_stacks *s);
 void		free_stacks(t_stacks *s);
 int			big_algo(t_list **stack_a, t_stacks *s);
 void		error_free_stack(t_list **stack_a);
+int			count_mediane(t_list *stack_a);
+int			minimal_index(t_list *lst);
+void		transfer_five(t_list **stack_a);
 
 #endif

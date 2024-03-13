@@ -54,3 +54,13 @@ int	condition_papush(t_list **tmp, t_list **dupli_a)
 		return (1);
 	return (0);
 }
+
+int	count_mediane(t_list *stack_a)
+{
+	int	i;
+
+	i = 0;
+	i = ft_lstsize(stack_a);
+	i = i / 2;
+	return (i);
+}
