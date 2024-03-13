@@ -53,10 +53,15 @@ int	alpha_check(char **argv)
 		while ((argv[i][j]) != '\0')
 		{
 			if (ft_isalpha(argv[i][j]))
-			{
-				write_error(-1);
 				return (-1);
+			if ((argv[i][j]) == '-' || (argv[i][j]) == '+')
+			{
+				if ((argv[i][j + 1]) == '-' || (argv[i][j + 1]) == '+'
+					|| (argv[i][j + 1]) == ' ' || (argv[i][j + 1]) == '\0')
+					return (-1);
 			}
+			if (j > 0 && ft_isdigit(argv[i][j - 1]) == 1)
+				return (-1);
 			j++;
 		}
 		i++;

@@ -127,7 +127,10 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (-1);
 	if (alpha_check(argv) == -1)
+	{
+		write_error(-1);
 		return (-1);
+	}
 	if (build_stack(argc, argv, &stack_a) == -1)
 		return (-1);
 	if (error_value(&stack_a, &stack_b) == -1)
