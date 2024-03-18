@@ -27,7 +27,6 @@ int	five_digit(t_list **stack_a, t_list **stack_b)
 	pa_push(stack_a, stack_b);
 	if (ft_lstsize(*stack_b) != 0)
 	{
-		ra_rotate(stack_a);
 		pa_push(stack_a, stack_b);
 	}
 	return (0);

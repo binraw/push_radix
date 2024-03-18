@@ -60,7 +60,8 @@ int	alpha_check(char **argv)
 					|| (argv[i][j + 1]) == ' ' || (argv[i][j + 1]) == '\0')
 					return (-1);
 			}
-			if (j > 0 && ft_isdigit(argv[i][j - 1]) == 1)
+			if (j > 0 && ((argv[i][j]) == '-' || (argv[i][j]) == '+')
+				&& ft_isdigit(argv[i][j - 1]) == 1)
 				return (-1);
 			j++;
 		}
